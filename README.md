@@ -10,8 +10,11 @@ were made on the board.
  ceramic for the other VDD/VSS pairs and VDDA/VSSA.
 - connect a 0.1uF capacitor between nRst and Gnd
 - connect Boot0 to Gnd
-- use mecrisp-stellaris for STM32L152RB and modify the memory settings for L151C8.
-- generate memmap.fs and bitfields.fs from mecrips-stellaris/common/svd2fth v3.
+
+Use mecrisp-stellaris for STM32L152RB and modify the memory settings for L151C8.
+Tweak the .s (assembler) file in the sources folder.
+
+Generate memmap.fs and bitfields.fs from mecrips-stellaris/common/svd2fth v3.
 
 ## Forth demo code
 1. led.fs drives LED on PB7 (pin 43). LED is active high.
