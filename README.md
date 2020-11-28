@@ -2,3 +2,5 @@
 
 1. led.fs drives LED on PB7 (pin 43). LED is active high.
 1. gpio.fs provides GPIO 'headers' for led.fs .
+1. blink.fs list 'main' program to blink the LED.
+ It also defines a busy loop delay.
