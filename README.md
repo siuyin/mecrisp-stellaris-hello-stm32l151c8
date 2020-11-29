@@ -26,3 +26,4 @@ Generate memmap.fs and bitfields.fs from mecrips-stellaris/common/svd2fth v3.
 1. tim.fs defines hardware timer related constants.
 1. rcc.fs defines reset and clock control related constants.
 1. pdur.fs provides routines to measure pulse duration.
+1. btndur.fs measures duration of push button press in milliseconds.
