@@ -21,3 +21,5 @@ Generate memmap.fs and bitfields.fs from mecrips-stellaris/common/svd2fth v3.
 1. gpio.fs provides GPIO 'headers' for led.fs .
 1. blink.fs list 'main' program to blink the LED.
  It also defines a busy loop delay.
+1. btn.fs supports a push button (active low) on PA6, pin 16.
+1. ledbtn.fs lights the LED when button is pushed.
