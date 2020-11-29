@@ -23,3 +23,6 @@ Generate memmap.fs and bitfields.fs from mecrips-stellaris/common/svd2fth v3.
  It also defines a busy loop delay.
 1. btn.fs supports a push button (active low) on PA6, pin 16.
 1. ledbtn.fs lights the LED when button is pushed.
+1. tim.fs defines hardware timer related constants.
+1. rcc.fs defines reset and clock control related constants.
+1. pdur.fs provides routines to measure pulse duration.
