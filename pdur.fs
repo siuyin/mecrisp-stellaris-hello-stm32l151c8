@@ -8,6 +8,7 @@
 ;
 : pa6Alt ( -- ) \ configure PA6 to Tim10_Ch1
     %10 6 2* lshift GPIOA-MODER bis! \ configure PA6 to alternate function mode
+    %01 6 2* lshift GPIOA-PUPDR bis! \ enable pull-up on PA6
     %0011 6 4 * lshift GPIOA-AFRL bis! \ configure PA6 to alternate function 3 (Tim10_Ch1)
 ;
 : capEdge ( 0/1 -- ) \ 0: capture on rising edge, 1: capture on falling edge
@@ -27,6 +28,7 @@
     16000 1- TIM10-PSC h! \ set timer 10 prescaler to divide by 16000 to give a clock period of 1ms
 
     %01 TIM10-CCMR1_Input bis! \ link timer channel 1 pin to input 1
+
     1 capEdge \ capture on falling edge as button is pushed
     1 TIM10-CCER bis! \ enable capture
 
@@ -43,14 +45,18 @@
     TIM10-CCR1 h@ >r \ push start time to return stack (temporary variable)
 
     0 capEdge \ change to capture on rising edge
+    1 TIM10-CCER bis! \ enable capture
+
     waitICF
     TIM10-CCR1 h@ r> - \ end time - start time (milliseconds)
 
-    1 capEdge \ reset for next button push
+    1 capEdge \ reset to capture on falling edge for next button push
 ;
 \ PDMeas outputs the duration of the button push in milliseconds.
 : PDMeas ( -- n )
-    TIM10-CCR1 h@ drop
+
+    TIM10-CCR1 h@ drop \ read to clear any raised capture flag
     waitCap \ wait for timer input duration capture
+
 ;
 
