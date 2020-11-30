@@ -9,12 +9,11 @@ compiletoram
 
 compiletoram
 
-\ main
-: main ( -- )
-    PDInit
-
+: meas ( -- )
     cr ." Push the button on PA6 to display button-down duration" cr
     PDMeas .
 ;
 
-main
+\ main
+PDInit
+meas
